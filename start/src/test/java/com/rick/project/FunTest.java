@@ -33,9 +33,6 @@ public class FunTest {
     @Autowired
     private UserService userService;
 
-    @Autowired
-    private ServiceImpl<UserMapper, UserDO> userDAO;
-
     /**
      * 通过Mapper操作数据
      *     <select id="findAll" resultType="com.rick.project.user.mybatis.entity.MybatisUser">
@@ -81,16 +78,27 @@ public class FunTest {
     }
 
     /**
-     * 测试ServiceImpl
+     * 测试DAO
      */
     @Test
-    public void testPage() {
+    public void testDAO() {
         UserDO user1 = userService.getUserById(1L);
 
         UserDO user2 = userService.getUserByName("Ashley");
 
         Assert.assertEquals("Rick", user1.getName());
         Assert.assertEquals(2L, user2.getId().longValue());
+    }
+
+    @Test
+    public void testPage() {
+        Grid<UserDO> p1 = userService.page1();
+        Grid<UserDO> p2 = userService.page2();
+        Grid<Map<String, Object>> p3 = userService.page3();
+
+        Assert.assertEquals(2, p1.getTotalPages());
+        Assert.assertEquals(1, p2.getTotalPages());
+        Assert.assertEquals(1, p3.getTotalPages());
     }
 
 }
