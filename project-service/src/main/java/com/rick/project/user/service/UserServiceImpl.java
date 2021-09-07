@@ -56,7 +56,7 @@ public class UserServiceImpl implements UserService {
     public Grid<UserDO> page2() {
         PageHelper.startPage(1,2
                 , SQLUtils.getOrderBy("sys_user"
-                        , "name", false, new String[] {"name"}, true));
+                        , "name", false, new String[] {"name"}));
 
         List<UserDO> list = userDAO.list();
         // 将查询到的数据封装到PageInfo对象

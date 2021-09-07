@@ -16,10 +16,10 @@
  */
 package com.rick.project.user.mybatis.mapper;
 
-import java.util.List;
-
 import com.rick.project.user.mybatis.entity.MybatisUser;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
 
 /**
  * 指定这是一个操作数据库的mapper

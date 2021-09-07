@@ -1,9 +1,7 @@
 package com.rick.project;
 
-import com.rick.project.sys.data.DictProperties;
-import com.rick.project.sys.data.api.DictService;
-import com.rick.project.sys.data.dao.dataobject.DictDO;
-import com.rick.project.sys.data.service.DictUtils;
+import com.rick.meta.dict.dao.dataobject.DictDO;
+import com.rick.meta.dict.service.DictService;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -34,10 +32,10 @@ public class DictTest {
 
     @Test
     public void testDictYml() {
-        Assert.assertEquals(2, DictUtils.getDict("grade").size());
-        Assert.assertEquals("一年级",DictUtils.getDictLabel("grade", "g1").get().getLabel());
-        Assert.assertEquals("Rick",DictUtils.getDictLabel("user", "jkxyx205").get().getLabel());
-        Assert.assertEquals("男",DictUtils.getDictLabel("sex", "M").get().getLabel());
+        Assert.assertEquals(2, dictService.getDictByType("grade").size());
+        Assert.assertEquals("一年级",dictService.getDictByTypeAndName("grade", "g1").get().getLabel());
+        Assert.assertEquals("Rick",dictService.getDictByTypeAndName("user", "jkxyx205").get().getLabel());
+        Assert.assertEquals("男",dictService.getDictByTypeAndName("sex", "M").get().getLabel());
     }
 
 }

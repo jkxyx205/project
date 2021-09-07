@@ -20,6 +20,7 @@
         <mysql.version>5.1.47</mysql.version>
         <sharp-common.version>1.0.0</sharp-common.version>
         <sharp-database.version>1.0-SNAPSHOT</sharp-database.version>
+        <sharp-meta.version>1.0-SNAPSHOT</sharp-meta.version>
         <sharp-excel.version>1.0-SNAPSHOT</sharp-excel.version>
     </properties>
 
@@ -60,6 +61,11 @@
                 <groupId>com.rick.db</groupId>
                 <artifactId>sharp-database</artifactId>
                 <version>${sharp-database.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.rick.meta</groupId>
+                <artifactId>sharp-meta</artifactId>
+                <version>${sharp-meta.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.rick.db</groupId>
