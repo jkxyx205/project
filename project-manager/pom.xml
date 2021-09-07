@@ -17,6 +17,10 @@
             <artifactId>project-dao</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.rick.meta</groupId>
+            <artifactId>sharp-meta</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

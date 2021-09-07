@@ -1,10 +1,7 @@
 package com.rick.project.user.web;
 
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import com.rick.db.dto.Grid;
 import com.rick.project.user.api.UserService;
 import com.rick.project.user.dao.dataobject.UserDO;
-import com.rick.project.user.dao.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;

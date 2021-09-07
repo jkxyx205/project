@@ -16,13 +16,13 @@
  */
 package com.rick.project.user.mybatis.controller;
 
-import java.util.List;
-
 import com.rick.project.user.mybatis.entity.MybatisUser;
 import com.rick.project.user.mybatis.mapper.MybatisUserMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/mybatis/users")
