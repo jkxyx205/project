@@ -13,7 +13,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.rick</groupId>
+            <groupId>com.rick.common</groupId>
             <artifactId>sharp-common</artifactId>
         </dependency>
         <dependency>
