@@ -1,5 +1,7 @@
 package com.rick.project.user.web;
 
+import com.rick.common.http.model.Result;
+import com.rick.common.http.model.ResultUtils;
 import com.rick.project.user.api.UserService;
 import com.rick.project.user.dao.dataobject.UserDO;
 import lombok.RequiredArgsConstructor;
@@ -45,8 +47,8 @@ public class UserController {
      * @return
      */
     @RequestMapping
-    public UserDO getUserByName(String name) {
-        return userService.getUserByName(name);
+    public Result<UserDO> getUserByName(String name) {
+        return ResultUtils.success(userService.getUserByName(name));
     }
 
 }

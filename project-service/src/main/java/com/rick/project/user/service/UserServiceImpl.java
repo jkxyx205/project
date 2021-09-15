@@ -5,10 +5,12 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.google.common.collect.Maps;
+import com.rick.common.http.exception.BizException;
 import com.rick.db.dto.Grid;
 import com.rick.db.dto.PageModel;
 import com.rick.db.plugin.GridUtils;
 import com.rick.db.plugin.SQLUtils;
+import com.rick.project.exception.ExceptionCode;
 import com.rick.project.user.api.UserService;
 import com.rick.project.user.dao.dataobject.UserDO;
 import com.rick.project.user.dao.mapper.UserMapper;
@@ -35,6 +37,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDO getUserByName(String name) {
+        if (name.length() > 5) {
+            throw new BizException(ExceptionCode.REQUEST_PARAM_ERROR.result());
+        }
         return userDAO.getBaseMapper().selectByName(name);
     }
 

@@ -12,6 +12,7 @@
     <version>0.0.1-SNAPSHOT</version>
 
     <dependencies>
+        <!-- 依赖DAO中的DO-->
         <dependency>
             <groupId>com.rick.project</groupId>
             <artifactId>project-dao</artifactId>
