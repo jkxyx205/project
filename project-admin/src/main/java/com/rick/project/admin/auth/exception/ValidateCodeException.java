@@ -1,6 +1,6 @@
 package com.rick.project.admin.auth.exception;
 
-import com.rick.project.admin.common.ResultCode;
+import com.rick.project.admin.common.ExceptionCode;
 import org.springframework.security.core.AuthenticationException;
 
 /**
@@ -15,6 +15,6 @@ import org.springframework.security.core.AuthenticationException;
 public class ValidateCodeException extends AuthenticationException {
 
     public ValidateCodeException() {
-        super(ResultCode.VALIDATE_CODE_ERROR.getMsg());
+        super(ExceptionCode.VALIDATE_CODE_ERROR.getMsg());
     }
 }

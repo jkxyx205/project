@@ -1,8 +1,8 @@
 package com.rick.project.admin.auth.service;
 
+import com.rick.db.plugin.SQLUtils;
 import com.rick.project.admin.auth.entity.Permission;
 import com.rick.project.admin.auth.repository.PermissionRepository;
-import com.rick.project.admin.common.DbService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,8 +21,6 @@ import java.util.Set;
  */
 @Service
 public class PermissionService {
-    @Autowired
-    private DbService dbService;
 
     @Autowired
     private PermissionRepository permissionRepository;
@@ -32,7 +30,7 @@ public class PermissionService {
     }
 
     public void addRoles(long permissionId, Set<Long> roleIds) {
-        dbService.updateRelationShip("sys_auth_role_permission", "permission_id", "role_id", permissionId, roleIds);
+        SQLUtils.updateRefTable("sys_auth_role_permission", "permission_id", "role_id", permissionId, roleIds);
     }
 
     public List<Permission> findAll() {

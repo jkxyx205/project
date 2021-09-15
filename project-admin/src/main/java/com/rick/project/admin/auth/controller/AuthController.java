@@ -1,5 +1,8 @@
 package com.rick.project.admin.auth.controller;
 
+import com.rick.common.http.exception.BizException;
+import com.rick.common.http.model.Result;
+import com.rick.common.http.model.ResultUtils;
 import com.rick.project.admin.auth.authentication.AcUserDetails;
 import com.rick.project.admin.auth.entity.Role;
 import com.rick.project.admin.auth.model.RoleInfoDTO;
@@ -7,10 +10,7 @@ import com.rick.project.admin.auth.model.UserDTO;
 import com.rick.project.admin.auth.model.UserPermissionVO;
 import com.rick.project.admin.auth.service.RoleService;
 import com.rick.project.admin.auth.service.UserService;
-import com.rick.project.admin.common.Result;
-import com.rick.project.admin.common.ResultCode;
-import com.rick.project.admin.common.ResultUtils;
-import com.rick.project.admin.exception.AcException;
+import com.rick.project.admin.common.ExceptionCode;
 import com.rick.project.admin.util.PasswordGenerator;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -168,7 +168,7 @@ public class AuthController {
     public Result editAuthRole(@RequestBody List<Role> roleList) {
         for (Role role : roleList) {
             if (StringUtils.isBlank(role.getName())) {
-                throw new AcException(ResultCode.ROLE_NULL_ERROR);
+                throw new BizException(ExceptionCode.ROLE_NULL_ERROR.result());
             }
         }
 

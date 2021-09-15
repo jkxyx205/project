@@ -10,9 +10,9 @@ spring:
     properties:
       hibernate:
         format_sql: true
-logging:
-  path: /Users/rick/jkxyx205/tmp/iic/log
-
 sharp:
   database:
-    type: mysqlRole
+    type: mysql
+logging:
+  file:
+    path: /Users/rick/jkxyx205/tmp/iic/log

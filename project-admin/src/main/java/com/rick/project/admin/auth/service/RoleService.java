@@ -2,12 +2,12 @@ package com.rick.project.admin.auth.service;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.rick.db.plugin.SQLUtils;
 import com.rick.db.service.SharpService;
 import com.rick.project.admin.auth.entity.Role;
 import com.rick.project.admin.auth.model.RoleInfoDTO;
 import com.rick.project.admin.auth.model.UserDTO;
 import com.rick.project.admin.auth.repository.RoleRepository;
-import com.rick.project.admin.common.DbService;
 import com.rick.project.admin.plugin.ztree.model.TreeNode;
 import com.rick.project.admin.plugin.ztree.service.TreeService;
 import org.apache.commons.lang3.RandomStringUtils;
@@ -35,9 +35,6 @@ public class RoleService {
 
     @Autowired
     private RoleRepository roleRepository;
-
-    @Autowired
-    private DbService dbService;
 
     @Autowired
     private TreeService treeService;
@@ -70,7 +67,7 @@ public class RoleService {
      * @param permissionIds
      */
     public void addPermission(long roleId, Set<Long> permissionIds) {
-        dbService.updateRelationShip("sys_auth_role_permission", "role_id", "permission_id", roleId, permissionIds);
+        SQLUtils.updateRefTable("sys_auth_role_permission", "role_id", "permission_id", roleId, permissionIds);
     }
 
     /**
@@ -169,7 +166,7 @@ public class RoleService {
 
 
     public void addUser(long roleId, Set<String> userIds) {
-        dbService.updateRelationShip("sys_auth_user_role", "role_id", "user_id", roleId, userIds);
+        SQLUtils.updateRefTable("sys_auth_user_role", "role_id", "user_id", roleId, userIds);
     }
 
     /**

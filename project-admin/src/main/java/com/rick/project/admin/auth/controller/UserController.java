@@ -1,11 +1,11 @@
 package com.rick.project.admin.auth.controller;
 
+import com.rick.common.http.model.Result;
+import com.rick.common.http.model.ResultUtils;
 import com.rick.db.dto.Grid;
 import com.rick.db.plugin.GridHttpServletRequestUtils;
 import com.rick.project.admin.auth.service.RoleService;
 import com.rick.project.admin.auth.service.UserService;
-import com.rick.project.admin.common.Result;
-import com.rick.project.admin.common.ResultUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;

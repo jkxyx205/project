@@ -1,9 +1,10 @@
 package com.rick.project.admin.config;
 
+import com.rick.common.http.exception.ApiExceptionHandler;
+import com.rick.common.http.util.MessageUtils;
 import com.rick.project.admin.auth.filter.UrlHandlerInterceptor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.LocaleResolver;
@@ -26,10 +27,8 @@ import java.util.Locale;
  * @Copyright: 2019 www.yodean.com. All rights reserved.
  */
 @Configuration
+@ComponentScan(basePackageClasses = {ApiExceptionHandler.class, MessageUtils.class})
 public class MvcConfig implements WebMvcConfigurer {
-
-    @Autowired
-    private MessageSource messageSource;
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {

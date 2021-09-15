@@ -49,7 +49,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.headers().disable()
                 .authorizeRequests()
-                .antMatchers("/forbidden", "/kaptcha").permitAll()
+                .antMatchers("/forbidden", "/kaptcha", "/login").permitAll()
                 .and()
                 .authorizeRequests()
                 .anyRequest().authenticated()

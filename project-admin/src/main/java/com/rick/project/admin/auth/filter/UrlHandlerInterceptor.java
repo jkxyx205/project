@@ -1,13 +1,12 @@
 package com.rick.project.admin.auth.filter;
 
 import com.rick.common.http.HttpServletRequestUtils;
+import com.rick.common.http.exception.BizException;
 import com.rick.project.admin.auth.authentication.AcUserDetails;
 import com.rick.project.admin.auth.constant.AuthConstants;
 import com.rick.project.admin.auth.model.UserContextHolder;
 import com.rick.project.admin.auth.model.UserDTO;
-import com.rick.project.admin.common.ResultCode;
-import com.rick.project.admin.exception.AcException;
-import com.rick.project.admin.util.WebUtils;
+import com.rick.project.admin.common.ExceptionCode;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.lang.Nullable;
 import org.springframework.mobile.device.Device;
@@ -68,7 +67,7 @@ public class UrlHandlerInterceptor implements HandlerInterceptor {
 
         log.info("VISIT: 用户{}-{}访问地址{}, method={}, ip={}, 设备类型={}, 参数={}", username, name,  request.getRequestURI()
                 , request.getMethod()
-                , WebUtils.getClientIpAddress(request)
+                , HttpServletRequestUtils.getClientIpAddress(request)
                 , device
                 , " params => " + params);
 
@@ -76,7 +75,7 @@ public class UrlHandlerInterceptor implements HandlerInterceptor {
 
         if (HttpServletRequestUtils.isAjaxRequest(request) && "/login".equals(servletPath)) {
             if (HttpServletRequestUtils.isAjaxRequest(request)) {
-                throw new AcException(ResultCode.INVALID_SESSION);
+                throw new BizException(ExceptionCode.INVALID_SESSION.result());
             }
         }
 

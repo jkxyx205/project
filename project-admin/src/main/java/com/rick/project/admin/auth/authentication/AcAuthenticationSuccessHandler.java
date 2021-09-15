@@ -1,10 +1,10 @@
 package com.rick.project.admin.auth.authentication;
 
+import com.rick.common.http.HttpServletRequestUtils;
+import com.rick.common.util.StringUtils;
 import com.rick.project.admin.auth.constant.AuthConstants;
 import com.rick.project.admin.auth.model.UserContextHolder;
 import com.rick.project.admin.auth.model.UserDTO;
-import com.rick.project.admin.common.ImageNameHelper;
-import com.rick.project.admin.util.WebUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mobile.device.Device;
@@ -46,7 +46,7 @@ public class AcAuthenticationSuccessHandler implements AuthenticationSuccessHand
 
         AcUserDetails userDetails = ((AcUserDetails) authentication.getPrincipal());
         UserDTO user = userDetails.getUser();
-        user.setImgName(ImageNameHelper.generateImgName(user.getName()));
+        user.setImgName(StringUtils.generateImgName(user.getName()));
 
         request.getSession().setAttribute("user", user);
 
@@ -56,7 +56,7 @@ public class AcAuthenticationSuccessHandler implements AuthenticationSuccessHand
         Device device = liteDeviceResolver.resolveDevice(request);
 
 
-        log.info("LOGIN:用户{}进入系统,ip:{},device={}", userDetails.getUsername(), WebUtils.getClientIpAddress(request), device.getDevicePlatform());
+        log.info("LOGIN:用户{}进入系统,ip:{},device={}", userDetails.getUsername(), HttpServletRequestUtils.getClientIpAddress(request), device.getDevicePlatform());
 
 //        RequestCache cache = new HttpSessionRequestCache();
 //        SavedRequest savedRequest = cache.getRequest(request, response);

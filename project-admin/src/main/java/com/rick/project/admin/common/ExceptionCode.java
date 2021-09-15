@@ -1,5 +1,7 @@
 package com.rick.project.admin.common;
 
+import com.rick.common.http.model.ExceptionResult;
+import com.rick.common.http.model.ResultUtils;
 import lombok.Getter;
 import lombok.ToString;
 
@@ -14,8 +16,7 @@ import lombok.ToString;
  */
 @Getter
 @ToString
-public enum ResultCode {
-    OK(0, "OK"), ERROR(-1, "服务器异常"),
+public enum ExceptionCode {
     REQUEST_PARAM_ERROR(30001, "参数传递错误"),
     BEAN_VALIDATE_ERROR(30002, "BEAN_VALIDATE_ERROR"),
     ACCESS_FORBIDDEN_ERROR(40002, "访问未授权"),
@@ -33,8 +34,12 @@ public enum ResultCode {
 
     private String msg;
 
-    ResultCode(int code, String msg) {
+    ExceptionCode(int code, String msg) {
         this.code = code;
         this.msg = msg;
+    }
+
+    public ExceptionResult<String> result() {
+        return ResultUtils.exception(getCode(), getMsg());
     }
 }

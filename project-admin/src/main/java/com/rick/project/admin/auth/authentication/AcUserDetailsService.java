@@ -1,11 +1,11 @@
 package com.rick.project.admin.auth.authentication;
 
+import com.rick.common.http.util.MessageUtils;
 import com.rick.project.admin.auth.constant.AuthConstants;
 import com.rick.project.admin.auth.entity.UserStatusEnum;
 import com.rick.project.admin.auth.exception.MaxTryLoginException;
 import com.rick.project.admin.auth.model.UserDTO;
 import com.rick.project.admin.auth.service.UserService;
-import com.rick.project.admin.util.MessageUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
