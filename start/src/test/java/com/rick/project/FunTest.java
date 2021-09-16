@@ -2,6 +2,7 @@ package com.rick.project;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.google.common.collect.Maps;
+import com.rick.common.http.exception.BizException;
 import com.rick.db.dto.Grid;
 import com.rick.db.plugin.GridUtils;
 import com.rick.db.plugin.mybatis.MappedSharpService;
@@ -82,12 +83,16 @@ public class FunTest {
      */
     @Test
     public void testDAO() {
-        UserDO user1 = userService.getUserById(1L);
+        UserDO user = userService.getUserById(1L);
+        Assert.assertEquals("Rick", user.getName());
+    }
 
-        UserDO user2 = userService.getUserByName("Ashley");
-
-        Assert.assertEquals("Rick", user1.getName());
-        Assert.assertEquals(2L, user2.getId().longValue());
+    /**
+     * 测试Exception
+     */
+    @Test(expected = BizException.class)
+    public void testException() {
+        userService.getUserByName("Ashley");
     }
 
     @Test
